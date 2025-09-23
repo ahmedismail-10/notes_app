@@ -17,7 +17,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  String? title, subTitle;
+  String? title, content;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -33,7 +33,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
           CustomTextFormField(
             onSaved: (value) {
-              subTitle = value;
+              content = value;
             },
             hintText: 'Content',
             maxLines: 5,
@@ -54,7 +54,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     ).format(currentDate);
                     NoteModel noteModel = NoteModel(
                       title: title!,
-                      subTitle: subTitle!,
+                      content: content!,
                       date: formattedCurrentDate,
                       color: Colors.blue.toARGB32(),
                     );
