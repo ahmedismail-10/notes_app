@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit.dart';
+import 'package:notes_app/helper.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/widgets/custom_app_bar.dart';
 import 'package:notes_app/views/widgets/custom_text_form_field.dart';
@@ -37,6 +38,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               widget.note.title = titleController.text;
               widget.note.content = contentController.text;
               widget.note.save();
+              showSnackBar(context, 'Note updated successfully.');
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               Navigator.pop(context);
             },
